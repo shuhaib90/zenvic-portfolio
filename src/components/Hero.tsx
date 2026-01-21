@@ -1,23 +1,45 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
+    const [isVisible, setIsVisible] = useState(true);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0.1 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-black [will-change:transform]">
-            {/* 3D Spline Backdrop - Hidden on Mobile for Performance */}
+        <section
+            ref={sectionRef}
+            className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-black [will-change:transform]"
+        >
+            {/* 3D Spline Backdrop - Hidden on Mobile and when not in view */}
             <div className="absolute inset-0 z-0 hidden md:block">
-                <div className="relative w-full h-[110%] -top-[5%]">
-                    <iframe
-                        src='https://my.spline.design/thresholddarkambientui-KDI92nLR3Xs4sDmaBVv7wYZK/'
-                        className="w-full h-full border-none opacity-60"
-                        title="3D Hero Background"
-                    />
-                    {/* Visual filter overlay to blend and partially hide watermark area */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
-                </div>
+                {isVisible && (
+                    <div className="relative w-full h-[110%] -top-[5%]">
+                        <iframe
+                            src='https://my.spline.design/thresholddarkambientui-KDI92nLR3Xs4sDmaBVv7wYZK/'
+                            className="w-full h-full border-none opacity-60"
+                            title="3D Hero Background"
+                        />
+                        {/* Visual filter overlay to blend and partially hide watermark area */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
+                    </div>
+                )}
             </div>
 
             {/* Mobile-Only Lightweight Background Gradient */}
