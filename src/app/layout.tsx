@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
+import Script from "next/script";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,11 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark">
       <body
         className={`${inter.variable} ${syne.variable} antialiased bg-black text-white selection:bg-white selection:text-black`}
       >
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

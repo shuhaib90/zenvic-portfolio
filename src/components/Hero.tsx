@@ -6,18 +6,22 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <section className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-black">
-            {/* 3D Spline Backdrop */}
-            <div className="absolute inset-0 z-0">
+        <section className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-black [will-change:transform]">
+            {/* 3D Spline Backdrop - Hidden on Mobile for Performance */}
+            <div className="absolute inset-0 z-0 hidden md:block">
                 <div className="relative w-full h-[110%] -top-[5%]">
                     <iframe
                         src='https://my.spline.design/thresholddarkambientui-KDI92nLR3Xs4sDmaBVv7wYZK/'
-                        className="w-full h-full border-none"
+                        className="w-full h-full border-none opacity-60"
+                        title="3D Hero Background"
                     />
                     {/* Visual filter overlay to blend and partially hide watermark area */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
                 </div>
             </div>
+
+            {/* Mobile-Only Lightweight Background Gradient */}
+            <div className="absolute inset-0 z-0 md:hidden bg-[radial-gradient(circle_at_center,_var(--background)_0%,_#111_100%)] opacity-50" />
 
             <div className="z-10 text-center max-w-4xl mx-auto space-y-8">
                 <motion.div
@@ -26,11 +30,32 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="relative"
                 >
-                    <h1 className="text-8xl md:text-9xl font-display font-bold tracking-tighter text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                        zenvic
+                    <h1 className="text-8xl md:text-9xl font-display font-bold tracking-tighter text-white flex justify-center drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        {"zenvic".split("").map((char, index) => (
+                            <motion.span
+                                key={index}
+                                initial={{ opacity: 0, filter: "blur(10px)" }}
+                                animate={{
+                                    opacity: 1,
+                                    filter: "blur(0px)",
+                                }}
+                                transition={{
+                                    delay: index * 0.08,
+                                    duration: 0.4,
+                                }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
                     </h1>
+                    {/* Pulsating Aura - Simplified for Performance */}
+                    <motion.div
+                        className="absolute inset-0 -z-10 bg-white/5 blur-[60px] rounded-full"
+                        animate={{ opacity: [0.1, 0.3, 0.1] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     <motion.span
-                        className="absolute -top-4 -right-4 text-xs font-mono text-gray-400 border border-gray-800 px-2 py-1 rounded-full"
+                        className="absolute -top-4 -right-4 text-xs font-mono text-gray-400 border border-gray-800 px-2 py-1 rounded-full bg-black/50 backdrop-blur-sm"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 1, duration: 0.5 }}

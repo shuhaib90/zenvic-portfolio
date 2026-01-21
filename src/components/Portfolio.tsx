@@ -61,7 +61,7 @@ export default function Portfolio() {
                     animate={controls}
                     drag="x"
                     dragConstraints={{ left: -projects.length * 450, right: 0 }}
-                    className="flex gap-6 whitespace-nowrap px-4"
+                    className="flex gap-6 whitespace-nowrap px-4 [will-change:transform]"
                     style={{ width: "max-content" }}
                 >
                     {duplicatedProjects.map((project, idx) => (
