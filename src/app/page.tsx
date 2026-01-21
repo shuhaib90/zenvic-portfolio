@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
+import Rating from "@/components/Rating";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <About />
       <Skills />
       <Portfolio />
+      <Rating />
       <Contact />
 
       <footer className="py-8 text-center text-gray-600 text-xs font-mono border-t border-white/5 bg-black">
