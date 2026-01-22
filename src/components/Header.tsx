@@ -2,8 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Sun, Moon, Zap, ZapOff } from "lucide-react";
+import { useSettings } from "./SettingsProvider";
 
 export default function Header() {
+    const { theme, toggleTheme, is3DEnabled, toggle3D } = useSettings();
+
     return (
         <motion.header
             initial={{ y: -100 }}
@@ -15,20 +19,39 @@ export default function Header() {
                 ZNVC
             </Link>
 
-            <nav className="hidden md:flex gap-8">
-                {["About", "Skills", "Portfolio", "Contact"].map((item) => (
-                    <Link
-                        key={item}
-                        href={`#${item.toLowerCase()}`}
-                        className="text-sm font-mono text-gray-400 hover:text-white transition-colors tracking-widest uppercase"
-                    >
-                        {item}
-                    </Link>
-                ))}
-            </nav>
+            <div className="flex items-center gap-6">
+                <nav className="hidden md:flex gap-8 items-center mr-4">
+                    {["About", "Skills", "Portfolio"].map((item) => (
+                        <Link
+                            key={item}
+                            href={`#${item.toLowerCase()}`}
+                            className="text-xs font-mono text-gray-400 hover:text-white transition-colors tracking-widest uppercase"
+                        >
+                            {item}
+                        </Link>
+                    ))}
+                </nav>
 
-            <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center group cursor-pointer hover:bg-white hover:border-white transition-colors">
-                <div className="w-4 h-[1px] bg-white group-hover:bg-black transition-colors" />
+                <div className="flex items-center bg-gray-900/40 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 gap-4">
+                    <button
+                        onClick={toggleTheme}
+                        className="text-white hover:text-gray-400 transition-colors p-1"
+                        title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                    >
+                        {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                    </button>
+                    <div className="w-[1px] h-4 bg-white/20" />
+                    <button
+                        onClick={toggle3D}
+                        className={`flex items-center gap-2 transition-colors p-1 ${is3DEnabled ? 'text-white' : 'text-red-500 opacity-50'}`}
+                        title={is3DEnabled ? "Disable 3D (Performance)" : "Enable 3D"}
+                    >
+                        {is3DEnabled ? <Zap className="w-4 h-4" /> : <ZapOff className="w-4 h-4" />}
+                        <span className="hidden sm:inline text-[9px] font-mono leading-none tracking-tighter">
+                            {is3DEnabled ? "3D ON" : "3D OFF"}
+                        </span>
+                    </button>
+                </div>
             </div>
         </motion.header>
     );

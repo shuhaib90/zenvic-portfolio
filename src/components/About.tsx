@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
     return (
-        <section id="about" className="py-32 px-4 relative border-t border-white/10 bg-black">
+        <section id="about" className="py-32 px-4 relative border-t border-foreground/10 bg-background transition-colors duration-300">
             <div className="max-w-4xl mx-auto">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
                     <motion.div
@@ -13,10 +13,10 @@ export default function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
                             About
                         </h2>
-                        <div className="h-1 w-20 bg-white mb-6" />
+                        <div className="h-1 w-20 bg-foreground mb-6" />
                     </motion.div>
 
                     <motion.div
@@ -24,29 +24,29 @@ export default function About() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="space-y-8 text-xl text-gray-400 font-light leading-relaxed"
+                        className="space-y-8 text-xl text-muted-foreground font-light leading-relaxed"
                     >
                         <motion.p
-                            whileHover={{ color: "#fff", textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
+                            whileHover={{ color: "var(--foreground)" }}
                             transition={{ duration: 0.2 }}
                             className="cursor-default"
                         >
-                            I’m <span className="text-white font-medium">zenvic</span>, a Web3 content writer, community moderator, and project ambassador.
+                            I’m <span className="text-foreground font-medium">zenvic</span>, a Web3 content writer, community moderator, and project ambassador.
                             I have 2 years of experience working in the crypto and Web3 space.
                         </motion.p>
 
                         <motion.p
-                            whileHover={{ color: "#fff", textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
+                            whileHover={{ color: "var(--foreground)" }}
                             transition={{ duration: 0.2 }}
                             className="cursor-default"
                         >
-                            I’ve worked with <span className="text-white">10+ Web3 projects</span>, helping them grow through clear content,
+                            I’ve worked with <span className="text-foreground">10+ Web3 projects</span>, helping them grow through clear content,
                             strong community management, and daily engagement. I’ve managed and moderated communities with over
-                            <span className="text-white"> 20,000 members</span> across Discord and Telegram.
+                            <span className="text-foreground"> 20,000 members</span> across Discord and Telegram.
                         </motion.p>
 
                         <motion.p
-                            whileHover={{ color: "#fff", textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
+                            whileHover={{ color: "var(--foreground)" }}
                             transition={{ duration: 0.2 }}
                             className="cursor-default"
                         >
@@ -55,7 +55,7 @@ export default function About() {
                         </motion.p>
 
                         <motion.p
-                            whileHover={{ color: "#fff", textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
+                            whileHover={{ color: "var(--foreground)" }}
                             transition={{ duration: 0.2 }}
                             className="cursor-default"
                         >

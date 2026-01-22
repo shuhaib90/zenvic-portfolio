@@ -4,8 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
+import { useSettings } from "./SettingsProvider";
 
 export default function Hero() {
+    const { is3DEnabled } = useSettings();
     const [isVisible, setIsVisible] = useState(true);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -24,12 +26,13 @@ export default function Hero() {
 
     return (
         <section
+            id="hero"
             ref={sectionRef}
-            className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-black [will-change:transform]"
+            className="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden bg-background [will-change:transform] transition-colors duration-300"
         >
-            {/* 3D Spline Backdrop - Hidden on Mobile and when not in view */}
+            {/* 3D Spline Backdrop - Hidden on Mobile or if Disabled */}
             <div className="absolute inset-0 z-0 hidden md:block">
-                {isVisible && (
+                {(isVisible && is3DEnabled) ? (
                     <div className="relative w-full h-[110%] -top-[5%]">
                         <iframe
                             src='https://my.spline.design/thresholddarkambientui-KDI92nLR3Xs4sDmaBVv7wYZK/'
@@ -39,6 +42,8 @@ export default function Hero() {
                         {/* Visual filter overlay to blend and partially hide watermark area */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
                     </div>
+                ) : (
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05)_0%,_transparent_100%)] opacity-30" />
                 )}
             </div>
 
