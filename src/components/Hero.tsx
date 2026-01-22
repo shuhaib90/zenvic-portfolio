@@ -57,7 +57,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="relative"
                 >
-                    <h1 className="text-8xl md:text-9xl font-display font-bold tracking-tighter text-white flex justify-center drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                    <h1 className="text-8xl md:text-9xl font-display font-bold tracking-tighter text-foreground flex justify-center drop-shadow-[0_0_15px_rgba(var(--foreground-rgb),0.3)] transition-colors duration-300">
                         {"zenvic".split("").map((char, index) => (
                             <motion.span
                                 key={index}
@@ -77,12 +77,12 @@ export default function Hero() {
                     </h1>
                     {/* Pulsating Aura - Simplified for Performance */}
                     <motion.div
-                        className="absolute inset-0 -z-10 bg-white/5 blur-[60px] rounded-full"
+                        className="absolute inset-0 -z-10 bg-foreground/5 blur-[60px] rounded-full"
                         animate={{ opacity: [0.1, 0.3, 0.1] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     />
                     <motion.span
-                        className="absolute -top-4 -right-4 text-xs font-mono text-gray-400 border border-gray-800 px-2 py-1 rounded-full bg-black/50 backdrop-blur-sm"
+                        className="absolute -top-4 -right-4 text-xs font-mono text-muted-foreground border border-foreground/10 px-2 py-1 rounded-full bg-background/50 backdrop-blur-sm"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 1, duration: 0.5 }}
@@ -95,10 +95,10 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="text-xl md:text-2xl text-gray-400 font-light tracking-wide"
+                    className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide text-center"
                 >
-                    Content Creator <span className="text-gray-700 mx-2">|</span>
-                    Moderator <span className="text-gray-700 mx-2">|</span>
+                    Content Creator <span className="text-foreground/20 mx-2">|</span>
+                    Moderator <span className="text-foreground/20 mx-2">|</span>
                     Designer
                 </motion.p>
 
@@ -110,7 +110,7 @@ export default function Hero() {
                 >
                     <Link
                         href="#portfolio"
-                        className="group relative px-8 py-3 bg-white text-black font-semibold rounded-full overflow-hidden transition-transform hover:scale-105"
+                        className="group relative px-8 py-3 bg-foreground text-background font-semibold rounded-full overflow-hidden transition-transform hover:scale-105"
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             View Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -119,7 +119,7 @@ export default function Hero() {
 
                     <Link
                         href="#contact"
-                        className="group px-8 py-3 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-colors"
+                        className="group px-8 py-3 bg-transparent border border-foreground/20 text-foreground font-medium rounded-full hover:bg-foreground/10 transition-colors"
                     >
                         <span className="flex items-center gap-2">
                             Contact Me
@@ -139,7 +139,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm text-gray-600 font-mono animate-bounce"
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm text-muted-foreground/40 font-mono animate-bounce"
             >
                 SCROLL TO EXPLORE
             </motion.div>

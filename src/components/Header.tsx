@@ -13,9 +13,9 @@ export default function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference"
+            className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-background/50 backdrop-blur-xl border-b border-foreground/5 transition-colors duration-300"
         >
-            <Link href="/" className="text-2xl font-display font-bold text-white tracking-widest">
+            <Link href="/" className="text-2xl font-display font-bold text-foreground tracking-widest">
                 ZNVC
             </Link>
 
@@ -25,25 +25,25 @@ export default function Header() {
                         <Link
                             key={item}
                             href={`#${item.toLowerCase()}`}
-                            className="text-xs font-mono text-gray-400 hover:text-white transition-colors tracking-widest uppercase"
+                            className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors tracking-widest uppercase"
                         >
                             {item}
                         </Link>
                     ))}
                 </nav>
 
-                <div className="flex items-center bg-gray-900/40 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 gap-4">
+                <div className="flex items-center bg-muted/40 backdrop-blur-md rounded-full px-4 py-2 border border-foreground/10 gap-4">
                     <button
                         onClick={toggleTheme}
-                        className="text-white hover:text-gray-400 transition-colors p-1"
+                        className="text-foreground hover:text-muted-foreground transition-colors p-1"
                         title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
                     >
                         {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                     </button>
-                    <div className="w-[1px] h-4 bg-white/20" />
+                    <div className="w-[1px] h-4 bg-foreground/20" />
                     <button
                         onClick={toggle3D}
-                        className={`flex items-center gap-2 transition-colors p-1 ${is3DEnabled ? 'text-white' : 'text-red-500 opacity-50'}`}
+                        className={`flex items-center gap-2 transition-colors p-1 ${is3DEnabled ? 'text-foreground' : 'text-red-500 opacity-50'}`}
                         title={is3DEnabled ? "Disable 3D (Performance)" : "Enable 3D"}
                     >
                         {is3DEnabled ? <Zap className="w-4 h-4" /> : <ZapOff className="w-4 h-4" />}
