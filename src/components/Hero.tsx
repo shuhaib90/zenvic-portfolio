@@ -50,42 +50,39 @@ export default function Hero() {
             {/* Mobile-Only Lightweight Background Gradient */}
             <div className="absolute inset-0 z-0 md:hidden bg-[radial-gradient(circle_at_center,_var(--background)_0%,_#111_100%)] opacity-50" />
 
-            <div className="z-10 text-center max-w-4xl mx-auto space-y-8">
+            <div className="z-10 text-center max-w-4xl mx-auto space-y-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="relative"
                 >
-                    <h1 className="text-8xl md:text-9xl font-display font-bold tracking-tighter text-foreground flex justify-center drop-shadow-[0_0_15px_rgba(var(--foreground-rgb),0.3)] transition-colors duration-300">
+                    <h1 className="text-8xl md:text-[10rem] font-display font-black tracking-tighter text-foreground flex justify-center drop-shadow-[10px_10px_0px_rgba(var(--foreground-rgb),1)] transition-colors duration-300 uppercase">
                         {"zenvic".split("").map((char, index) => (
                             <motion.span
                                 key={index}
-                                initial={{ opacity: 0, filter: "blur(10px)" }}
+                                initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{
                                     opacity: 1,
-                                    filter: "blur(0px)",
+                                    scale: 1,
                                 }}
                                 transition={{
                                     delay: index * 0.08,
-                                    duration: 0.4,
+                                    duration: 0.3,
+                                    type: "spring",
+                                    stiffness: 200
                                 }}
                             >
                                 {char}
                             </motion.span>
                         ))}
                     </h1>
-                    {/* Pulsating Aura - Simplified for Performance */}
-                    <motion.div
-                        className="absolute inset-0 -z-10 bg-foreground/5 blur-[60px] rounded-full"
-                        animate={{ opacity: [0.1, 0.3, 0.1] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    />
+                    
                     <motion.span
-                        className="absolute -top-4 -right-4 text-xs font-mono text-muted-foreground border border-foreground/10 px-2 py-1 rounded-full bg-background/50 backdrop-blur-sm"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1, duration: 0.5 }}
+                        className="absolute -top-6 -right-8 text-xs font-black text-background bg-accent-1 border-2 border-foreground px-4 py-2 rotate-12 shadow-[4px_4px_0px_0px_rgba(var(--foreground-rgb),0.3)] rounded-lg"
+                        initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 12 }}
+                        transition={{ delay: 1, type: "spring" }}
                     >
                         WEB3 NATIVE
                     </motion.span>
@@ -95,10 +92,10 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide text-center"
+                    className="text-2xl md:text-3xl text-foreground font-black tracking-tighter text-center uppercase"
                 >
-                    Content Creator <span className="text-foreground/20 mx-2">|</span>
-                    Moderator <span className="text-foreground/20 mx-2">|</span>
+                    Content Creator <span className="text-accent-1 mx-2">/</span>
+                    Moderator <span className="text-accent-1 mx-2">/</span>
                     Designer
                 </motion.p>
 
@@ -106,30 +103,23 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+                    className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12"
                 >
                     <Link
                         href="#portfolio"
-                        className="group relative px-8 py-3 bg-foreground text-background font-semibold rounded-full overflow-hidden transition-transform hover:scale-105"
+                        className="neo-brutal-btn px-10 py-4 text-xl flex items-center gap-3 bg-foreground text-background"
                     >
-                        <span className="relative z-10 flex items-center gap-2">
-                            View Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <span className="relative z-10 flex items-center gap-3">
+                            View Work <ArrowRight className="w-6 h-6" />
                         </span>
                     </Link>
 
                     <Link
                         href="#contact"
-                        className="group px-8 py-3 bg-transparent border border-foreground/20 text-foreground font-medium rounded-full hover:bg-foreground/10 transition-colors"
+                        className="neo-brutal-btn px-10 py-4 text-xl flex items-center gap-3"
                     >
-                        <span className="flex items-center gap-2">
-                            Contact Me
-                            <svg
-                                className="w-4 h-4 fill-current transition-transform group-hover:scale-110"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M20.317 4.37a19.782 19.782 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.006 19.006 0 004.88 4.37.071.071 0 004.852 4.41c-3.11 4.639-4.007 9.162-3.586 13.626a.074.074 0 00.031.056 19.909 19.909 0 005.993 3.03.078.078 0 00.084-.028 14.28 14.28 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.23 10.23 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.585-13.627a.072.072 0 00-.028-.039zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.42 0-1.334.955-2.417 2.157-2.417 1.21 0 2.176 1.083 2.157 2.417 0 1.335-.956 2.42-2.157 2.42zm7.975 0c-1.183 0-2.157-1.085-2.157-2.42 0-1.334.955-2.417 2.157-2.417 1.21 0 2.176 1.083 2.157 2.417 0 1.335-.946 2.42-2.157 2.42z" />
-                            </svg>
+                        <span className="flex items-center gap-3">
+                            Contact Me <Mail className="w-6 h-6" />
                         </span>
                     </Link>
                 </motion.div>
@@ -139,9 +129,9 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm text-muted-foreground/40 font-mono animate-bounce"
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm text-foreground font-black border-2 border-foreground px-4 py-2 bg-background shadow-[4px_4px_0px_0px_var(--accent-1)] rounded-lg animate-bounce uppercase tracking-tighter"
             >
-                SCROLL TO EXPLORE
+                Scroll to Explore ↓
             </motion.div>
         </section>
     );
